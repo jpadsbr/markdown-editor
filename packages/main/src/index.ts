@@ -1,6 +1,6 @@
-import {app, BrowserWindow} from 'electron';
-import {join} from 'path';
-import {URL} from 'url';
+import { app, BrowserWindow } from 'electron';
+import { join } from 'path';
+import { URL } from 'url';
 
 
 const isSingleInstance = app.requestSingleInstanceLock();
@@ -16,7 +16,7 @@ app.disableHardwareAcceleration();
 if (import.meta.env.MODE === 'development') {
   app.whenReady()
     .then(() => import('electron-devtools-installer'))
-    .then(({default: installExtension, VUEJS3_DEVTOOLS}) => installExtension(VUEJS3_DEVTOOLS, {
+    .then(({ default: installExtension, VUEJS3_DEVTOOLS }) => installExtension(VUEJS3_DEVTOOLS, {
       loadExtensionOptions: {
         allowFileAccess: true,
       },
@@ -29,6 +29,8 @@ let mainWindow: BrowserWindow | null = null;
 const createWindow = async () => {
   mainWindow = new BrowserWindow({
     show: false, // Use 'ready-to-show' event to show window
+    vibrancy: 'under-window',
+    visualEffectState: 'active',
     webPreferences: {
       preload: join(__dirname, '../../preload/dist/index.cjs'),
       contextIsolation: import.meta.env.MODE !== 'test',   // Spectron tests can't work with contextIsolation: true
@@ -89,7 +91,7 @@ app.whenReady()
 if (import.meta.env.PROD) {
   app.whenReady()
     .then(() => import('electron-updater'))
-    .then(({autoUpdater}) => autoUpdater.checkForUpdatesAndNotify())
+    .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
     .catch((e) => console.error('Failed check updates:', e));
 }
 
