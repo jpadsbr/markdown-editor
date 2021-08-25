@@ -1,5 +1,5 @@
-const {Application} = require('spectron');
-const {strict: assert} = require('assert');
+const { Application } = require('spectron');
+const { strict: assert } = require('assert');
 
 const app = new Application({
   path: require('electron'),
@@ -20,8 +20,8 @@ app.start()
 
   .then(async function () {
     // Get the window content
-    const content = await app.client.$('#app');
-    assert.notStrictEqual(await content.getHTML(), '<div id="app"></div>', 'Window content is empty');
+    const content = await app.client.$('#root');
+    assert.notStrictEqual(await content.getHTML(), '<div id="root"></div>', 'Window content is empty');
   })
 
   .then(function () {
