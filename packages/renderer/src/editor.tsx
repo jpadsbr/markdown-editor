@@ -23,7 +23,7 @@ const Editor: React.FC<Props> = (props) => {
       // Do nothing for now
     }
   }, [editorView])
-  return <div className='editor-wrapper' ref={refContainer}>Editor</div>
+  return <div className='editor-wrapper' ref={refContainer}></div>
 }
 
 export default Editor
