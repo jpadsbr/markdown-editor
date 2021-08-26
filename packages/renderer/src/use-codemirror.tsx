@@ -18,7 +18,7 @@ export const transparentTheme = EditorView.theme({
   }
 })
 
-/*const syntaxHighlighting = HighlightStyle.define([
+const syntaxHighlighting = HighlightStyle.define([
   {
     tag: tags.heading1,
     fontSize: '1.6em',
@@ -34,7 +34,7 @@ export const transparentTheme = EditorView.theme({
     fontSize: '1.2em',
     fontWeight: 'bold'
   }
-])*/
+])
 
 import type React from 'react';
 
@@ -71,7 +71,7 @@ const useCodeMirror = <T extends Element>(
         }),
         oneDark,
         transparentTheme,
-        //syntaxHighlighting,
+        syntaxHighlighting,
         EditorView.lineWrapping,
         EditorView.updateListener.of(update => {
           if (update.changes) {

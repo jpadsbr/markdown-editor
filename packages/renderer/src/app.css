@@ -2,6 +2,7 @@
   background-color: #24282f;
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 
 button {
